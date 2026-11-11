@@ -1,0 +1,19 @@
+# Default owners
+* @nholguinrh
+
+# Canonical contract and team configuration
+/.ai/            @nholguinrh
+/AGENTS.md       @nholguinrh
+/CLAUDE.md       @nholguinrh
+/GEMINI.md       @nholguinrh
+/opencode.json   @nholguinrh
+
+# Shared infrastructure
+/.github/        @nholguinrh
+/compose.yaml    @nholguinrh
+/Makefile        @nholguinrh
+/scripts/        @nholguinrh
+/project.env     @nholguinrh
+
+# Language stacks
+/stacks/         @nholguinrh

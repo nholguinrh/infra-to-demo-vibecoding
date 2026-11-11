@@ -1,0 +1,7 @@
+description = "Run the container verification recipe from .ai/prompts/verify.md"
+prompt = """
+Act as the verifier described in .ai/agents/verifier.md and follow .ai/prompts/verify.md.
+Read AGENTS.md first. Run make doctor, make check-agents, make lint, make test, and make ci when
+shared infrastructure changed. Report exact commands with PASS, FAIL, or BLOCKED and quote key
+output. Never claim success without a zero exit code.
+"""

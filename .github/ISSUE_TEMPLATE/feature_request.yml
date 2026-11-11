@@ -1,0 +1,50 @@
+name: Feature request
+description: Propose a stack, workflow, or automation change
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read `AGENTS.md`. Language changes need an ADR; AI-tool neutrality is non-negotiable.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of change
+      options:
+        - New language stack
+        - Change to a stack
+        - Shared infrastructure / scripts
+        - CI
+        - AI contract / adapters
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Keep it container-first and tool-neutral.
+    validations:
+      required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: How will this be proven in containers?
+      placeholder: make build && make up && make test && make ci
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: This does not require a host runtime or Docker.
+          required: true
+        - label: This does not require a specific AI tool.
+          required: true
+        - label: If this changes a project language, I will write an ADR.

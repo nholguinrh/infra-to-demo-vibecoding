@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/nholguinrh/infra-to-demo-vibecoding/security/advisories/new
+    about: Report a vulnerability privately, never with a public issue.
+  - name: How this repository works
+    url: https://github.com/nholguinrh/infra-to-demo-vibecoding/blob/main/AGENTS.md
+    about: Read the canonical contract before opening a workflow question.

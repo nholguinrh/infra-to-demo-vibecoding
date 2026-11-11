@@ -1,0 +1,48 @@
+# Team configuration.
+# Shared, tool-neutral team contract. Edit handles and add teammates as needed.
+# language_pinned: the project language is fixed by project.env.
+# ai_tool_pinned: false means tools are personal; preferences are advisory only.
+
+version: 1
+team: vibe-infra
+canonical_contract: AGENTS.md
+owner: nholguinrh
+
+language_pinned: true
+language_source: project.env
+ai_tool_pinned: false
+
+members:
+  - handle: nholguinrh
+    name: Nelson Holguin
+    role: maintainer
+    preferred_ai_tools:
+      - opencode
+  - handle: teammate-dev
+    name: Replace with a real teammate
+    role: developer
+    preferred_ai_tools:
+      - claude-code
+  - handle: teammate-reviewer
+    name: Replace with a real teammate
+    role: reviewer
+    preferred_ai_tools:
+      - codex
+
+roles:
+  maintainer: .ai/teams/roles/maintainer.md
+  developer: .ai/teams/roles/developer.md
+  reviewer: .ai/teams/roles/reviewer.md
+
+workflow: .ai/teams/workflow.md
+codeowners: .github/CODEOWNERS
+
+review:
+  required_approvals: 1
+  require_container_ci: true
+  require_contract_check: true
+
+communication:
+  decisions: docs/adr/
+  task_recipes: .ai/prompts/
+  shared_agents: .ai/agents/

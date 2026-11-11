@@ -1,0 +1,27 @@
+FROM docker.io/library/maven:3.9.9-eclipse-temurin-21 AS deps
+
+WORKDIR /workspace
+
+COPY stacks/java-springboot/template/pom.xml /workspace/pom.xml
+RUN mvn -q -B -DskipTests dependency:go-offline
+
+FROM deps AS dev
+
+EXPOSE 8080
+CMD ["mvn", "-q", "spring-boot:run"]
+
+FROM deps AS build
+
+COPY app/ /workspace/
+RUN mvn -q -B -DskipTests package
+
+FROM docker.io/library/eclipse-temurin:21-jre AS prod
+
+RUN groupadd --gid 1001 app \
+    && useradd --uid 1001 --gid app --create-home app
+
+COPY --from=build /workspace/target/*.jar /app/app.jar
+
+USER app
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

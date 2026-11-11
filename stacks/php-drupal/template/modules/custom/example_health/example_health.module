@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Minimal Drupal module scaffold for Vibe Infra.
+ */
+
+/**
+ * Returns a health payload.
+ */
+function example_health_status(): array {
+  return ['status' => 'ok'];
+}

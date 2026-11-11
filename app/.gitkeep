@@ -1,0 +1,4 @@
+# Application code lives here after `make init STACK=<stack>`.
+
+Use the pinned stack from `../project.env`. Do not add a second language.
+All commands run through `make` and Podman.

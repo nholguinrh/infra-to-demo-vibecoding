@@ -1,0 +1,4 @@
+# Codex adapter.
+# Canonical project instructions are in AGENTS.md; Codex reads them automatically.
+# Keep model/provider choices in ~/.codex/config.toml, never in this repository.
+project_doc_max_bytes = 65536

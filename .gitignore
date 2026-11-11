@@ -1,0 +1,51 @@
+# Local secrets and machine state
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# Java
+target/
+.mvn/wrapper/maven-wrapper.jar
+*.class
+
+# PHP / Drupal
+vendor/
+web/core/
+web/modules/contrib/
+web/themes/contrib/
+web/sites/default/files/
+web/sites/default/settings.local.php
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+renv/library/
+
+# Node (future stacks)
+node_modules/
+npm-debug.log*
+
+# Containers and local caches
+.cache/
+*.log
+*.pid
+compose.override.yaml
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

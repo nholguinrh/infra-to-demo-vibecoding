@@ -1,0 +1,65 @@
+name: Bug report
+description: Something is broken in the skeleton, a stack, a script, or CI
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read `AGENTS.md` first. Do not paste secrets or `.env` contents.
+        Container evidence beats description.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Container / compose
+        - A language stack
+        - Scripts / Makefile
+        - CI / GitHub Actions
+        - AI contract / adapters
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: stack
+    attributes:
+      label: Active stack
+      description: Value of STACK= in project.env
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        make doctor
+        make up
+        make test
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and output
+      description: Redact passwords and tokens.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Podman version and OS
+      placeholder: podman 5.x on Fedora 41
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmations
+      options:
+        - label: I did not include secrets, tokens, or `.env` content.
+          required: true
+        - label: I reproduced this through the documented `make` targets or direct Podman.
+          required: true

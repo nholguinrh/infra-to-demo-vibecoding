@@ -1,0 +1,5 @@
+services:
+  app:
+    volumes:
+      - ./app:/workspace:Z
+    working_dir: /workspace

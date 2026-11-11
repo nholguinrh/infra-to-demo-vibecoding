@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  container-ci:
+    name: make ci (Podman)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Podman
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y podman
+          podman --version
+
+      - name: Enable rootless Podman when possible
+        run: |
+          if ! grep -q "^${USER}:" /etc/subuid 2>/dev/null; then
+            sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 "$USER" || true
+          fi
+          podman system migrate || true
+          podman info --format 'rootless={{.Host.Security.Rootless}}'
+
+      - name: Run the same local container CI
+        run: make ci
+
+      - name: AI contract drift check
+        if: always()
+        run: make check-agents

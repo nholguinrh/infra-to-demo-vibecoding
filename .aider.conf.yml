@@ -1,0 +1,9 @@
+# Aider adapter. Policy is canonical in AGENTS.md and .ai/.
+read:
+  - AGENTS.md
+  - .ai/policies/containers.md
+  - .ai/policies/languages.md
+  - .ai/policies/security.md
+  - .ai/teams/workflow.md
+auto-commits: false
+dirty-commits: false

@@ -1,0 +1,12 @@
+{
+  "name": "vibe/drupal-app",
+  "description": "Drupal custom code scaffold for Vibe Infra",
+  "type": "project",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "require": {}
+}

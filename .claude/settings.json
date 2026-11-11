@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(make:*)",
+      "Bash(scripts/*)",
+      "Bash(podman:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(npm install:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(composer:*)",
+      "Bash(mvn:*)",
+      "Bash(gradle:*)",
+      "Bash(Rscript:*)",
+      "Read(./.env)",
+      "Edit(./.env)",
+      "Write(./.env)"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+name: ${COMPOSE_PROJECT_NAME:-vibe}
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ${STACK_PATH:-./stacks/python-fastapi}/Containerfile
+      target: dev
+    image: ${COMPOSE_PROJECT_NAME:-vibe}/${STACK:-dev}:dev
+    environment:
+      APP_ENV: development
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: ${DB_NAME:-vibe}
+      DB_USER: ${DB_USER:-vibe}
+      DB_PASSWORD: ${ENVPASSWORD}
+      ENVPASSWORD: ${ENVPASSWORD}
+    ports:
+      - "${APP_PORT:-8000}:${CONTAINER_PORT:-8000}"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - appnet
+
+  db:
+    image: ${DB_IMAGE:-docker.io/library/mariadb:11.4}
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME:-vibe}
+      MARIADB_USER: ${DB_USER:-vibe}
+      MARIADB_PASSWORD: ${ENVPASSWORD}
+    ports:
+      - "${DB_PORT_HOST:-3307}:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "healthcheck.sh --connect --innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+    networks:
+      - appnet
+
+volumes:
+  dbdata:
+
+networks:
+  appnet:
+    driver: bridge

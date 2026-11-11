@@ -1,0 +1,18 @@
+---
+description: Canonical container-first project contract
+globs: ["**/*"]
+alwaysApply: true
+---
+
+Read and obey `AGENTS.md` and the canonical files under `.ai/` before changing anything.
+
+Key rules:
+
+- Every run, lint, test, database query, and CI step goes through Podman, normally via `make`.
+- Never install runtimes, package managers, or databases on the host.
+- Never use Docker.
+- The stack is pinned in `project.env`; the AI tool is personal and never pinned.
+- Do not add policy to tool-specific files. Update `AGENTS.md` / `.ai/` first.
+- Shared roles live in `.ai/agents/`; team rules in `.ai/teams/`.
+
+Fast path: `make doctor`, `make up`, `make lint`, `make test`, `make ci`.

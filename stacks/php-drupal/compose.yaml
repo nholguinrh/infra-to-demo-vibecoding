@@ -1,0 +1,7 @@
+services:
+  app:
+    volumes:
+      - ./app:/workspace:Z
+      - ./app/modules/custom:/var/www/html/modules/custom:Z
+      - ./app/themes/custom:/var/www/html/themes/custom:Z
+    working_dir: /var/www/html

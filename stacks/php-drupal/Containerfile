@@ -1,0 +1,20 @@
+FROM docker.io/library/drupal:11-apache AS base
+
+RUN a2enmod rewrite \
+    && mkdir -p /workspace
+
+WORKDIR /var/www/html
+
+FROM base AS dev
+
+WORKDIR /workspace
+EXPOSE 80
+CMD ["apache2-foreground"]
+
+FROM base AS prod
+
+COPY app/modules/custom/ /var/www/html/modules/custom/
+COPY app/themes/custom/ /var/www/html/themes/custom/
+
+EXPOSE 80
+CMD ["apache2-foreground"]
